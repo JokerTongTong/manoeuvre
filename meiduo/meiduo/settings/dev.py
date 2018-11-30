@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['api.meiduo.site','127.0.0.1']
 import sys
 
 sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
-print(sys.path)
+# print(sys.path)
 
 # Application definition
 
@@ -47,9 +47,8 @@ INSTALLED_APPS = [
     'ckeditor_uploader',  # 富文本编辑器上传图片模块
     'django_crontab', # 定时任务
     'haystack', # 搜索
-    # 'users.apps.UsersConfig'
     'users.apps.UsersConfig',
-    # 'oauth.apps.CauthConfig'
+    'oauth.apps.OauthConfig',
     'areas.apps.AreasConfig',
     'goods.apps.GoodsConfig',
     'contents.apps.ContentsConfig',
@@ -95,23 +94,34 @@ WSGI_APPLICATION = 'meiduo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'manoeuvre',
+#         'USER': 'manoeuvre',
+#         'PASSWORD':'manoeuvre',
+#         'PORT':3306,
+#         'HOST':'127.0.0.1'
+#     },
+#     # 'slave': {
+#     #     'ENGINE': 'django.db.backends.mysql',
+#     #     'NAME': 'meiduo_mall33',
+#     #     'USER': 'root',
+#     #     'PASSWORD':'mysql',
+#     #     'PORT':8306,
+#     #     'HOST':'192.168.5.148'
+#     # }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'manoeuvre',
-        'USER': 'manoeuvre',
-        'PASSWORD':'manoeuvre',
-        'PORT':3306,
-        'HOST':'127.0.0.1'
-    },
-    # 'slave': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'meiduo_mall33',
-    #     'USER': 'root',
-    #     'PASSWORD':'mysql',
-    #     'PORT':8306,
-    #     'HOST':'192.168.5.148'
-    # }
+        'NAME': 'aaaaaa',
+        'USER': 'root',
+        'PASSWORD': 'mysql',
+        'PORT': 3306,
+        'HOST': '127.0.0.1',
+    }
 }
 
 
@@ -157,35 +167,35 @@ STATIC_URL = '/static/'
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.5.148:6379/0",
+        "LOCATION": "redis://127.0.0.1:6379/0",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     },
     "session": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.5.148:6379/1",
+        "LOCATION": "redis://127.0.0.1:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     },
     "sms_code": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.5.148:6379/2",
+        "LOCATION": "redis://127.0.0.1:6379/2",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     },
     "history": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.5.148:6379/3",
+        "LOCATION": "redis://127.0.0.1:6379/3",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     },
     "cart": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.5.148:6379/4",
+        "LOCATION": "redis://127.0.0.1:6379/4",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -248,7 +258,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-# AUTH_USER_MODEL = 'users.User' # 指定自定义用户模型类
+AUTH_USER_MODEL = 'users.User' # 指定自定义用户模型类
 
 # CORS
 CORS_ORIGIN_WHITELIST = (
@@ -345,4 +355,4 @@ ALIPAY_URL = "https://openapi.alipaydev.com/gateway.do?"
 ALIPAY_DEBUG = True
 
 # 配置读写分离
-DATABASE_ROUTERS = ['meiduo.utils.db_router.MasterSlaveDBRouter']
+# DATABASE_ROUTERS = ['meiduo.utils.db_router.MasterSlaveDBRouter']
