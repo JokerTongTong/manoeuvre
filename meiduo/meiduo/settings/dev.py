@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['api.meiduo.site','127.0.0.1']
 import sys
 
 sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
-# print(sys.path)
+print(sys.path)
 
 # Application definition
 
@@ -47,15 +47,15 @@ INSTALLED_APPS = [
     'ckeditor_uploader',  # 富文本编辑器上传图片模块
     'django_crontab', # 定时任务
     'haystack', # 搜索
-
-    # 'users.apps.UsersConfig',
-    # 'oauth.apps.OauthConfig',
-    # 'areas.apps.AreasConfig',
-    # 'goods.apps.GoodsConfig',
-    # 'contents.apps.ContentsConfig',
-    # 'carts.apps.CartsConfig',
-    # 'orders.apps.OrdersConfig',
-    # 'payments.apps.PaymentsConfig',
+    # 'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
+    # 'oauth.apps.CauthConfig'
+    'areas.apps.AreasConfig',
+    'goods.apps.GoodsConfig',
+    'contents.apps.ContentsConfig',
+    'carts.apps.CartsConfig',
+    'orders.apps.OrdersConfig',
+    'payments.apps.PaymentsConfig',
 
 ]
 
